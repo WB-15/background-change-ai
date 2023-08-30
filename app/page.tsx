@@ -238,7 +238,6 @@ export default function HomePage() {
 
   const uploadImage = async (imageURI: any) => {
     try {
-      console.log("Blob before!!!!!!!", imageURI);
       fetch(imageURI)
         .then((response) => response.blob())
         .then((blob) => {
@@ -274,7 +273,7 @@ export default function HomePage() {
         });
     } catch (e: any) {
       console.log(e.message);
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -320,7 +319,6 @@ export default function HomePage() {
       setLoading(false);
       return;
     }
-    console.log("QWEQWEQWEQWEQWEWQ", result.output);
     setOutputImage(result.output);
     uploadImage(result.output);
     setLoading(false);
