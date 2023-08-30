@@ -2,7 +2,7 @@
 
 ![App screenshot](public/app-screenshot.png)
 
-## How to use
+## How to use 
 
 - Clone this project's repository
 - Install the dependencies by `npm install`
