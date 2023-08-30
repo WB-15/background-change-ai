@@ -1,7 +1,29 @@
 import { NextResponse } from "next/server";
 import Replicate from "replicate";
 
+import Cors from "cors";
+
+const cors = Cors({
+  methods: ["GET", "POST", "HEAD"],
+});
+
+function runMiddleware(
+  req: any,
+  res: any,
+  fn: (arg0: any, arg1: any, arg2: (result: any) => void) => void
+): Promise<void> {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+}
+
 export async function POST(request: Request) {
+  await runMiddleware(request, Response, cors);
   // 1. Get request data (in JSON format) from the client
   const req = await request.json();
 

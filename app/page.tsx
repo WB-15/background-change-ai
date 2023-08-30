@@ -238,6 +238,7 @@ export default function HomePage() {
 
   const uploadImage = async (imageURI: any) => {
     try {
+      console.log("Blob before!!!!!!!", imageURI);
       fetch(imageURI)
         .then((response) => response.blob())
         .then((blob) => {
