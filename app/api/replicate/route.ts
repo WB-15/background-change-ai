@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   // 5. Run the Replicate's model (to remove background) and get the output image
   const output = await replicate.run(model, { input });
 
-  // 6. Check if the output is NULL then return error back to the client
+  // 6. Check if the output is NULL then return err back to the client 
   if (!output) {
     console.log("Something went wrong");
     return NextResponse.json(
